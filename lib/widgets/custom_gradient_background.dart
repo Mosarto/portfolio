@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class CustomGradientBackground extends StatefulWidget {
@@ -50,7 +51,12 @@ class CustomGradientBackgroundState extends State<CustomGradientBackground> {
             child: GradientSphere(
                 radius: 150, show: scrollOffset < 1400 ? false : true),
           ),
-          widget.child,
+          Center(
+            child: SizedBox(
+              width: 1366,
+              child: widget.child,
+            ),
+          ),
         ],
       ),
     );

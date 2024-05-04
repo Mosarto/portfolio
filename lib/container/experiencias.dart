@@ -2,16 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/widgets/custom_experiencias_card.dart';
 
-class Experiencias extends StatelessWidget {
+class Experiencias extends StatefulWidget {
   const Experiencias({super.key});
 
   @override
+  State<Experiencias> createState() => _ExperienciasState();
+}
+
+class _ExperienciasState extends State<Experiencias>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
-    return Row(
+    super.build(context);
+    return GridView.count(
+      crossAxisCount: 2,
+      shrinkWrap: true,
+      crossAxisSpacing: 32,
+      childAspectRatio: 1.5,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         const CustomExperienciasCard(
           imagePath: 'assets/png/sysfar.png',
-          title: '2020-2023 - Sysfar',
+          title: 'Sysfar',
+          subtitle: '2020-2023',
         )
             .animate()
             .fade(
@@ -26,10 +42,10 @@ class Experiencias extends StatelessWidget {
               delay: 500.ms,
               duration: 2000.ms,
             ),
-        const SizedBox(width: 40),
         const CustomExperienciasCard(
           imagePath: 'assets/png/foster.png',
-          title: '2019 - Estúdio Foster',
+          title: 'Estúdio Foster',
+          subtitle: '2019-2020',
         )
             .animate()
             .fade(

@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri _urlGithub = Uri.parse('https://github.com/Mosarto');
@@ -14,38 +15,38 @@ final Uri _urlGyme = Uri.parse('https://github.com/Mosarto/gyme/');
 final Uri _urlCryptoboard =
     Uri.parse('https://github.com/Mosarto/cryptoboard/');
 
-Future<void> launchGithub() async {
+void launchGithub() async {
   if (!await launchUrl(_urlGithub)) {
-    throw Exception('Could not launch $_urlGithub');
+    Logger().e('Could not launch $_urlGithub');
   }
 }
 
-Future<void> launchLinkedin() async {
+void launchLinkedin() async {
   if (!await launchUrl(_urlLinkedin)) {
-    throw Exception('Could not launch $_urlLinkedin');
+    Logger().e('Could not launch $_urlLinkedin');
   }
 }
 
-Future<void> launchInstagram() async {
+void launchInstagram() async {
   if (!await launchUrl(_urlInstagram)) {
-    throw Exception('Could not launch $_urlInstagram');
+    Logger().e('Could not launch $_urlInstagram');
   }
 }
 
-Future<void> launchWebtoonApp() async {
+void launchWebtoonApp() async {
   if (!await launchUrl(_urlWebtoonApp)) {
-    throw Exception('Could not launch $_urlWebtoonApp');
+    Logger().e('Could not launch $_urlWebtoonApp');
   }
 }
 
-Future<void> launchGyme() async {
+void launchGyme() async {
   if (!await launchUrl(_urlGyme)) {
-    throw Exception('Could not launch $_urlGyme');
+    Logger().e('Could not launch $_urlGyme');
   }
 }
 
-Future<void> launchCryptoboard() async {
+void launchCryptoboard() async {
   if (!await launchUrl(_urlCryptoboard)) {
-    throw Exception('Could not launch $_urlCryptoboard');
+    Logger().e('Could not launch $_urlCryptoboard');
   }
 }

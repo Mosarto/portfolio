@@ -8,7 +8,7 @@ class Sobre extends StatefulWidget {
   State<Sobre> createState() => _SobreState();
 }
 
-class _SobreState extends State<Sobre> {
+class _SobreState extends State<Sobre> with AutomaticKeepAliveClientMixin {
   final List<bool> _isFinish = [
     true,
     false,
@@ -41,11 +41,15 @@ class _SobreState extends State<Sobre> {
     false,
     false,
   ];
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       height: 400,
-      width: (MediaQuery.of(context).size.width - 240) / 2,
       padding: const EdgeInsets.symmetric(
         horizontal: 24,
         vertical: 8,
@@ -104,7 +108,7 @@ class _SobreState extends State<Sobre> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: const Text(
-                      'lucasmosart.com.br',
+                      'www.github.com/Mosarto/portifoliopage',
                       style: TextStyle(
                         fontFamily: 'Fire Sans',
                         height: 1,
@@ -551,7 +555,7 @@ class _SobreState extends State<Sobre> {
                   ),
                   Container(
                     height: 24,
-                    width: 104,
+                    width: 140,
                     margin: const EdgeInsets.only(left: 32),
                     child: Stack(
                       children: [
@@ -566,7 +570,7 @@ class _SobreState extends State<Sobre> {
                                   isRepeatingAnimation: false,
                                   animatedTexts: [
                                     TypewriterAnimatedText(
-                                      "'Flutter'",
+                                      "'JavaScript'",
                                       textStyle: const TextStyle(
                                         color: Color(0xfff1fa84),
                                         fontFamily: 'FireCode',
@@ -579,7 +583,7 @@ class _SobreState extends State<Sobre> {
                               : const SizedBox(),
                         ),
                         Positioned(
-                          left: 94,
+                          left: 130,
                           child: _isFinish[18]
                               ? AnimatedTextKit(
                                   onNextBeforePause: (p0, p1) {
