@@ -12,7 +12,6 @@ Para criar um portfólio moderno e elegante, utilizei os seguintes widgets e pac
 
 - `flutter_svg`: Para lidar com imagens SVG e otimizar a qualidade das ilustrações.
 - `animated_text_kit`: Para adicionar animações de texto sofisticadas e envolventes.
-- `web_smooth_scroll`: Para melhorar a experiência de rolagem em aplicativos web.
 - `url_launcher`: Para abrir URLs externas em navegadores a partir do portfólio.
 - `flutter_animate`: Para criar animações avançadas e personalizadas em todo o aplicativo.
 - `clipboard`: Para copiar texto para a área de transferência de forma simples e rápida.
