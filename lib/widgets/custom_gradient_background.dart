@@ -13,51 +13,53 @@ class CustomGradientBackground extends StatefulWidget {
 }
 
 class CustomGradientBackgroundState extends State<CustomGradientBackground> {
-  double scrollOffset = 0;
+  ValueNotifier<double> scrollOffsetNotifier = ValueNotifier<double>(0);
 
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
         if (scrollNotification is ScrollUpdateNotification) {
-          setState(() {
-            scrollOffset += scrollNotification.scrollDelta!;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            scrollOffsetNotifier.value = scrollNotification.metrics.pixels;
           });
         }
-
         return true;
       },
-      child: Stack(
-        children: [
-          Positioned(
-            top: scrollOffset * -1.25,
-            right: 50,
-            child: GradientSphere(
-                radius: 500, show: scrollOffset < 600 ? true : false),
-          ),
-          Positioned(
-            top: scrollOffset * 0.10,
-            left: MediaQuery.of(context).size.width / 4,
-            child: GradientSphere(
-              radius: 550,
-              show: scrollOffset < 350
-                  ? false
-                  : (scrollOffset > 1800 ? false : true),
-            ),
-          ),
-          Positioned(
-            top: scrollOffset * 0.10,
-            left: -0,
-            child: GradientSphere(
-                radius: 150, show: scrollOffset < 1400 ? false : true),
-          ),
-          Center(
-            child: SizedBox(
-              width: 1366,
-              child: widget.child,
-            ),
-          ),
-        ],
+      child: ValueListenableBuilder<double>(
+        valueListenable: scrollOffsetNotifier,
+        builder: (context, value, child) {
+          return Stack(
+            children: [
+              Positioned(
+                top: value * -1.25,
+                right: 50,
+                child: GradientSphere(
+                    radius: 500, show: value < 600 ? true : false),
+              ),
+              Positioned(
+                top: value * 0.10,
+                left: MediaQuery.of(context).size.width / 4,
+                child: GradientSphere(
+                  radius: 550,
+                  show: value < 350 ? false : (value > 1800 ? false : true),
+                ),
+              ),
+              Positioned(
+                top: value * 0.10,
+                left: -0,
+                child: GradientSphere(
+                    radius: 150, show: value < 1400 ? false : true),
+              ),
+              Center(
+                child: SizedBox(
+                  width: 1366,
+                  child: widget.child,
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
